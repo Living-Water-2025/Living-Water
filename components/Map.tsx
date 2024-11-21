@@ -1,6 +1,7 @@
 "use client";
 
-import React, { useEffect, useRef } from "react";
+import { resolve } from "path";
+import React, { useEffect, useRef, useState } from "react";
 
 declare global {
   interface Window {
@@ -8,8 +9,17 @@ declare global {
   }
 }
 
+type BaptismLocation = {
+  id: string;
+  latitude: number;
+  longitude: number;
+};
+ 
+
 export const Map: React.FC = () => {
   const mapRef = useRef<HTMLDivElement>(null);
+  const [locations, setLocations] = useState<BaptismLocation[]>([]);
+  
 
   const darkModeStyles = [
     { elementType: "geometry", stylers: [{ color: "#212121" }] },
@@ -95,41 +105,26 @@ export const Map: React.FC = () => {
       featureType: "poi.business",
       stylers: [{ visibility: "off" }],
     },
-  ]
-
+  ];
 
   const initializeMap = () => {
     if (window.google && mapRef.current) {
-      
       const mapOptions = {
         zoom: 12,
         center: { lat: 38.47, lng: -89.93 },
         mapTypeControl: false,
         streetViewControl: false,
-        styles: [
-            ...removeBusinessIcon,
-            ...darkModeStyles
-        ],
-        
+        styles: [...removeBusinessIcon, ...darkModeStyles],
       };
 
       // Initialize the map with options
       const map = new window.google.maps.Map(mapRef.current, mapOptions);
 
-     
-      const locations = [
-        { lat: 38.6, lng: -89.5 },
-        { lat: 38.45, lng: -89.6 },
-        { lat: 38.1, lng: -89.92 },
-        { lat: 38.3, lng: -89.93 },
-        { lat: 38.47, lng: -89.8 },
-      ];
-
-     
       locations.forEach((location) => {
         new window.google.maps.Marker({
-          position: location,
+          position: { lat: location.latitude, lng: location.longitude },
           map: map,
+          title: `Baptism ID: ${location.id}`,
           icon: {
             path: window.google.maps.SymbolPath.FORWARD_CLOSED_ARROW,
             scale: 5,
@@ -142,6 +137,20 @@ export const Map: React.FC = () => {
     }
   };
 
+  const fetchBaptisms = async () => {
+    try {
+      const response = await fetch("https://living-water-backend-dev.azurewebsites.net/api/GetAllBaptisms");
+      const data: BaptismLocation[] = await response.json();
+      setLocations(data);
+    } catch (error) {
+      console.error("Error fetching baptism locations:", error);
+    }
+  };
+
+  useEffect(() => {
+    fetchBaptisms();
+  }, []);
+
   useEffect(() => {
     const loadGoogleMapsScript = () => {
       const script = document.createElement("script");
@@ -151,13 +160,16 @@ export const Map: React.FC = () => {
       document.body.appendChild(script);
     };
 
-    // Load the Google Maps script if it hasn't been loaded already
+
+    
     if (!window.google) {
       loadGoogleMapsScript();
     } else {
       initializeMap();
     }
-  }, []);
+  }, [locations]);
+
+ 
 
   return <div ref={mapRef} style={{ height: "500px", width: "100%" }} />;
 };
