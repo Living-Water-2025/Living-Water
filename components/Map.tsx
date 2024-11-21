@@ -173,3 +173,4 @@ export const Map: React.FC = () => {
 
   return <div ref={mapRef} style={{ height: "500px", width: "100%" }} />;
 };
+
