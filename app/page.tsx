@@ -1,12 +1,11 @@
-import { Map } from "../components/Map";
+import { Map } from "../components/Map/Map";
+import { MapTitle } from "@/components/Map/MapTitle";
 
 export default function Home() {
   return (
-    <div>
-      <h1 className="text-5xl font-thin">Living Water 2025</h1>
-      <main>
-        <Map />
-      </main>
-    </div>
+    <>
+      <MapTitle />
+      <Map />
+    </>
   );
 }
