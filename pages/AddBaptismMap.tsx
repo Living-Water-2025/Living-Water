@@ -4,8 +4,8 @@ import React from "react";
 import {
   GoogleMap,
   Marker,
-  useLoadScript as useGoogleMaps,
-} from "@react-google-maps/api";
+  useLoadScript as useGoogleMaps, //@ts-ignore 
+} from "react-google-maps/api"; 
 import { mapOptions } from "@/components/Map/MapOptions";
 import { RootLayout } from "@/components/RootLayout";
 import { useUserLocation } from "@/components/Hooks/useUserLocation";
