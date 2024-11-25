@@ -5,6 +5,7 @@ import {
   GoogleMap,
   Marker,
   useLoadScript as useGoogleMaps,
+  //@ts-ignore
 } from "@react-google-maps/api";
 import { mapOptions } from "@/components/Map/MapOptions";
 import { RootLayout } from "@/components/RootLayout";
