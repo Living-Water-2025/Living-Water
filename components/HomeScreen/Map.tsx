@@ -4,6 +4,7 @@ import {
   GoogleMap,
   Marker,
   useLoadScript as useGoogleMaps,
+  //@ts-ignore
 } from "@react-google-maps/api";
 import { useBaptisms } from "../Hooks/useBaptisms";
 import { mapOptions } from "../Map/MapOptions";
