@@ -9,9 +9,10 @@ import {
 import { mapOptions } from "./MapOptions";
 import { useBaptisms } from "../Hooks/useBaptisms";
 
-const center = { lat: 38.47, lng: -89.93 }; // Freeburg coordinates
+const center = { lat: 38.627260, lng: -90.021368}; 
 
 const icon = {
+//  url:"https://e7.pngegg.com/pngimages/38/957/png-clipart-water-drop-logo-drop-rain-blog-drops-television-blue.png",
   path: 4,
   scale: 5,
   fillOpacity: 0.45,

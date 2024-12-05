@@ -14,7 +14,7 @@ export default function Root(p: { children: React.ReactNode }) {
       <body
         style={{
           margin: 0,
-          height: "100vh",
+          height: "95vh",
           width: "100vw",
           backgroundColor: "black",
         }}
