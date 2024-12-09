@@ -1,5 +1,3 @@
-import { features } from "process";
-
 export const darkModeStyles = [
   {
     elementType: "geometry",
@@ -266,28 +264,20 @@ export const darkModeStyles = [
   {
     featureType: "road.arterial",
     elementType: "geometry",
-    stylers: [
-      { visibility: "off" },
-    ]
+    stylers: [{ visibility: "off" }],
   },
   {
     featureType: "road",
     elementType: "labels",
-    stylers: [
-      { visibility: "off" }
-    ]
+    stylers: [{ visibility: "off" }],
   },
   {
     featureType: "transit",
-    stylers: [
-      { visibility: "off" }
-    ]
+    stylers: [{ visibility: "off" }],
   },
   {
     featureType: "road.local",
     elementType: "geometry",
-    stylers: [
-      { visibility: "off" },
-    ]
+    stylers: [{ visibility: "off" }],
   },
 ];
