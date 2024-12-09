@@ -70,7 +70,7 @@ export const darkModeStyles = [
     featureType: "poi.place_of_worship",
     stylers: [
       {
-        visibility: "on",
+        visibility: "off",
       },
     ],
   },
@@ -79,7 +79,7 @@ export const darkModeStyles = [
     elementType: "geometry",
     stylers: [
       {
-        visibility: "on",
+        visibility: "off",
       },
     ],
   },
@@ -221,7 +221,7 @@ export const darkModeStyles = [
     elementType: "geometry",
     stylers: [
       {
-        color: "#2f3948",
+        visibility: "off",
       },
     ],
   },
@@ -230,7 +230,7 @@ export const darkModeStyles = [
     elementType: "labels.text.fill",
     stylers: [
       {
-        color: "#d59563",
+        visibility: "off",
       },
     ],
   },
@@ -260,5 +260,24 @@ export const darkModeStyles = [
         color: "#17263c",
       },
     ],
+  },
+  {
+    featureType: "road.arterial",
+    elementType: "geometry",
+    stylers: [{ visibility: "off" }],
+  },
+  {
+    featureType: "road",
+    elementType: "labels",
+    stylers: [{ visibility: "off" }],
+  },
+  {
+    featureType: "transit",
+    stylers: [{ visibility: "off" }],
+  },
+  {
+    featureType: "road.local",
+    elementType: "geometry",
+    stylers: [{ visibility: "off" }],
   },
 ];
