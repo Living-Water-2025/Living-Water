@@ -4,8 +4,8 @@ import React from "react";
 import {
   GoogleMap,
   Marker,
-  useLoadScript as useGoogleMaps, //@ts-ignore 
-} from "@react-google-maps/api"; 
+  useLoadScript as useGoogleMaps, //@ts-ignore
+} from "@react-google-maps/api";
 import { mapOptions } from "@/components/Map/MapOptions";
 import { RootLayout } from "@/components/RootLayout";
 import { useUserLocation } from "@/components/Hooks/useUserLocation";
@@ -39,7 +39,7 @@ export default function AddBaptismMap() {
 
       <GoogleMap
         mapContainerStyle={{
-          width: "100%",
+          width: "100vw",
           height: "100%",
         }}
         center={userLocation}
