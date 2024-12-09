@@ -7,7 +7,7 @@ import {
   //@ts-ignore
 } from "@react-google-maps/api";
 import { mapOptions } from "./MapOptions";
-import { useBaptisms } from "../Hooks/useBaptisms";
+import { Baptism } from "../API/Models/Baptism";
 
 const center = { lat: 38.627260, lng: -90.021368}; 
 
@@ -21,8 +21,9 @@ const icon = {
   fillColor: "#0000ff",
 };
 
-export const Map: React.FC = () => {
-  const baptisms = useBaptisms();
+type MapProps = { baptisms: Baptism[]}
+export const Map: React.FC<MapProps> = ( {baptisms}) => {
+ 
 
   const { isLoaded, loadError } = useGoogleMaps({
     googleMapsApiKey: "AIzaSyBMQeNeNZsjY4mHXExFMrInA-P8Od78goY",
