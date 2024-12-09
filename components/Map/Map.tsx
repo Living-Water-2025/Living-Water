@@ -14,7 +14,7 @@ const center = { lat: 38.62726, lng: -90.021368 };
 const icon = {
   //  url:"https://e7.pngegg.com/pngimages/38/957/png-clipart-water-drop-logo-drop-rain-blog-drops-television-blue.png",
   path: 4,
-  scale: 5,
+  scale: 6,
   fillOpacity: 0.45,
   strokeWeight: 4,
   strokeColor: "#0000ff",
@@ -33,7 +33,7 @@ export const Map: React.FC<MapProps> = ({ baptisms }) => {
     <GoogleMap
       mapContainerStyle={{ width: "100%", height: "100%" }}
       center={center}
-      zoom={12}
+      zoom={10}
       options={mapOptions}
     >
       {baptisms.map((baptism) => (
