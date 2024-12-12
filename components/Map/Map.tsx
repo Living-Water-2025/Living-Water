@@ -27,24 +27,49 @@ export const Map: React.FC<MapProps> = ({ baptisms }) => {
     googleMapsApiKey: "AIzaSyBMQeNeNZsjY4mHXExFMrInA-P8Od78goY",
   });
 
-  if (!isLoaded || loadError) return <div>Please wait...</div>;
+  if (!isLoaded || loadError) return <Spacer />;
 
   return (
-    <GoogleMap
-      mapContainerStyle={{ width: "100%", height: "100%" }}
-      center={center}
-      zoom={10}
-      options={mapOptions}
-    >
-      {baptisms.map((baptism) => (
-        <Marker
-          key={baptism.id}
-          position={{ lat: baptism.latitude, lng: baptism.longitude }}
-          title={`Baptism ID: ${baptism.id}`}
-          icon={icon}
-          animation={google.maps.Animation.DROP}
-        />
-      ))}
-    </GoogleMap>
+    <>
+      <div
+        autoFocus={true}
+        style={{
+          position: "fixed",
+          top: 0,
+          left: 0,
+          width: "100%",
+          height: "100vh",
+          zIndex: -1,
+        }}
+      >
+        <GoogleMap
+          mapContainerStyle={{ width: "100%", height: "101.5vh" }}
+          center={center}
+          zoom={10}
+          options={mapOptions}
+        >
+          {baptisms.map((baptism) => (
+            <Marker
+              key={baptism.id}
+              position={{ lat: baptism.latitude, lng: baptism.longitude }}
+              title={`Baptism ID: ${baptism.id}`}
+              icon={icon}
+              animation={google.maps.Animation.DROP}
+            />
+          ))}
+        </GoogleMap>
+      </div>
+      <Spacer />
+    </>
   );
 };
+
+const Spacer = () => (
+  <div
+    style={{
+      margin: 0,
+      width: "100%",
+      height: "95vh",
+    }}
+  />
+);
