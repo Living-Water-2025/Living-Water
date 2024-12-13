@@ -1,13 +1,16 @@
-import React from "react";
+import React, { use, useEffect } from "react";
 import { ColorTheme } from "../ColorTheme";
+import { useShimmerAnimation } from "../Hooks/useShimmerAnimation";
 
 type ProgressBarProps = {
-  numBaptisms: number; // Progress percentage (0-100)
+  numBaptisms: number; 
 };
 
 const ProgressBar: React.FC<ProgressBarProps> = ({ numBaptisms }) => {
-  const goalBaptisms = 12;
+  const goalBaptisms = 4;
   const percentComplete = (numBaptisms / goalBaptisms) * 100;
+  
+  useShimmerAnimation()
   return (
     <div className="rounded-lg shadow-md p-1 bg-white">
       <div
@@ -18,7 +21,7 @@ const ProgressBar: React.FC<ProgressBarProps> = ({ numBaptisms }) => {
         }}
       >
         <div
-          className="rounded-lg"
+          className="rounded-lg shimmer-effect"
           style={{
             width: `${percentComplete}%`,
             background: ColorTheme.primaryColor,
@@ -35,3 +38,4 @@ const ProgressBar: React.FC<ProgressBarProps> = ({ numBaptisms }) => {
 };
 
 export default ProgressBar;
+

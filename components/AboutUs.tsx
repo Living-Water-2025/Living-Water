@@ -2,7 +2,7 @@ import React from "react";
 import { ColorTheme } from "./ColorTheme";
 export const AboutUs: React.FC = () => (
   <div>
-    <div className="rounded-lg shadow-md p-5">
+    <div className="rounded-lg shadow-md p-5 ">
       <h2
         className="text-2xl font-bold mb-4 text-center"
         style={{ color: ColorTheme.primaryColorTertiary }}
@@ -10,7 +10,7 @@ export const AboutUs: React.FC = () => (
         About This Map
       </h2>
       <p
-        className="text-md leading-relaxed p-4 m-3 rounded-lg"
+        className="text-md leading-relaxed p-4 m-3 rounded-lg "
         style={{ backgroundColor: ColorTheme.primaryColor }}
       >
         This map is a testimony to the work the Lord is doing in our community.
