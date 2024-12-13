@@ -13,9 +13,14 @@ export default function Home() {
       <MapTitle />
       <Map baptisms={baptisms} />
 
-      <div className="w-4/5 flex flex-col mx-auto">
+      <div style={{
+        padding: "1rem",
+        background: "rgb(0,0,0, 0.5)",
+      }}
+      className="w-4/5 flex flex-col mx-auto">
         <ProgressBar numBaptisms={baptisms.length} />
         <AboutUs />
+        
       </div>
     </>
   );

@@ -3,39 +3,67 @@ import { ColorTheme } from "../ColorTheme";
 import { useShimmerAnimation } from "../Hooks/useShimmerAnimation";
 
 type ProgressBarProps = {
-  numBaptisms: number; 
+  numBaptisms: number;
 };
 
 const ProgressBar: React.FC<ProgressBarProps> = ({ numBaptisms }) => {
   const goalBaptisms = 4;
   const percentComplete = (numBaptisms / goalBaptisms) * 100;
-  
-  useShimmerAnimation()
+
+  useShimmerAnimation();
+
   return (
-    <div className="rounded-lg shadow-md p-1 bg-white">
+    <div>
       <div
-        className="rounded-lg bg-gray-50"
         style={{
-          width: "100%",
-          height: "3vh",
+          marginRight: "1rem",
+          textAlignLast: "right",
+          color: ColorTheme.textColorLight,
         }}
       >
-        <div
-          className="rounded-lg shimmer-effect"
-          style={{
-            width: `${percentComplete}%`,
-            background: ColorTheme.primaryColor,
-            height: "100%",
-            textAlign: "center",
-            color: "#fff",
-          }}
-        >
-          {numBaptisms && `${numBaptisms} of ${goalBaptisms}`}
-        </div>
+        80%
       </div>
+      <Bar
+        percentComplete={percentComplete}
+        numBaptisms={numBaptisms}
+        goalBaptisms={goalBaptisms}
+      />
     </div>
   );
 };
 
 export default ProgressBar;
 
+type BarProps = {
+  percentComplete: number;
+  goalBaptisms: number;
+  numBaptisms: number;
+};
+
+const Bar: React.FC<BarProps> = ({
+  percentComplete,
+  goalBaptisms,
+  numBaptisms,
+}) => (
+  <div
+    style={{
+      background: ColorTheme.backgroundColorSecondary,
+      width: "100%",
+      height: "3vh",
+      borderRadius: "0.5rem /* 8px */",
+    }}
+  >
+    <div
+      className="rounded-lg shimmer-effect"
+      style={{
+        width: `${percentComplete}%`,
+        background: ColorTheme.primaryColor,
+        height: "100%",
+        textAlign: "center",
+        color: "#fff",
+      }}
+    >
+      {numBaptisms && `${numBaptisms} of ${goalBaptisms}`}
+    </div>
+  </div>
+);

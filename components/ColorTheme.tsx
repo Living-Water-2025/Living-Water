@@ -12,4 +12,7 @@ export class ColorTheme {
   public static primaryColor: string = "#28bff3";
   public static primaryColorSecondary: string = "#28a3df";
   public static primaryColorTertiary: string = "#2786cb";
+
+  public static textColorDark: string = "#000000";
+  public static textColorLight: string = "#ffffff";
 }
