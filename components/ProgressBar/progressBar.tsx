@@ -1,39 +1,69 @@
-import React from "react";
+import React, { use, useEffect } from "react";
+import { ColorTheme } from "../ColorTheme";
+import { useShimmerAnimation } from "../Hooks/useShimmerAnimation";
 
 type ProgressBarProps = {
-  numBaptisms: number; // Progress percentage (0-100)
+  numBaptisms: number;
 };
 
 const ProgressBar: React.FC<ProgressBarProps> = ({ numBaptisms }) => {
-  const goalBaptisms = 12;
+  const goalBaptisms = 4;
   const percentComplete = (numBaptisms / goalBaptisms) * 100;
+
+  useShimmerAnimation();
+
   return (
-    <div className="rounded-lg shadow-md px-3 py-1">
+    <div>
       <div
         style={{
-          width: "100%",
-          background: "#e0e0e0",
-          borderRadius: "10px",
-          height: "20px",
+          marginRight: "1rem",
+          textAlignLast: "right",
+          color: ColorTheme.textColorLight,
         }}
       >
-        <div
-          style={{
-            width: `${percentComplete}%`,
-            background: "#29d",
-            height: "100%",
-            borderRadius: "10px",
-            textAlign: "center",
-            color: "#fff",
-            lineHeight: "20px",
-            fontWeight: "bold",
-          }}
-        >
-          {numBaptisms} of {goalBaptisms}
-        </div>
+        80%
       </div>
+      <Bar
+        percentComplete={percentComplete}
+        numBaptisms={numBaptisms}
+        goalBaptisms={goalBaptisms}
+      />
     </div>
   );
 };
 
 export default ProgressBar;
+
+type BarProps = {
+  percentComplete: number;
+  goalBaptisms: number;
+  numBaptisms: number;
+};
+
+const Bar: React.FC<BarProps> = ({
+  percentComplete,
+  goalBaptisms,
+  numBaptisms,
+}) => (
+  <div
+    style={{
+      background: ColorTheme.backgroundColorSecondary,
+      width: "100%",
+      height: "3vh",
+      borderRadius: "0.5rem /* 8px */",
+    }}
+  >
+    <div
+      className="rounded-lg shimmer-effect"
+      style={{
+        width: `${percentComplete}%`,
+        background: ColorTheme.primaryColor,
+        height: "100%",
+        textAlign: "center",
+        color: "#fff",
+      }}
+    >
+      {numBaptisms && `${numBaptisms} of ${goalBaptisms}`}
+    </div>
+  </div>
+);
