@@ -7,7 +7,7 @@ export const AboutUs: React.FC = () => (
         className="text-2xl font-bold mb-4 text-center"
         style={{ color: ColorTheme.primaryColorTertiary }}
       >
-        About This Map
+        About
       </h2>
       <p
         className="text-md leading-relaxed p-4 m-3 rounded-lg "

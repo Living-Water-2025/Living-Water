@@ -7,7 +7,7 @@ type ProgressBarProps = {
 };
 
 const ProgressBar: React.FC<ProgressBarProps> = ({ numBaptisms }) => {
-  const goalBaptisms = 4;
+  const goalBaptisms = 200;
   const percentComplete = (numBaptisms / goalBaptisms) * 100;
 
   useShimmerAnimation();
@@ -21,7 +21,7 @@ const ProgressBar: React.FC<ProgressBarProps> = ({ numBaptisms }) => {
           color: ColorTheme.textColorLight,
         }}
       >
-        80%
+        {percentComplete.toFixed(0)}% Complete
       </div>
       <Bar
         percentComplete={percentComplete}
@@ -49,7 +49,7 @@ const Bar: React.FC<BarProps> = ({
     style={{
       background: ColorTheme.backgroundColorSecondary,
       width: "100%",
-      height: "3vh",
+      height: "1.5rem",
       borderRadius: "0.5rem /* 8px */",
     }}
   >
@@ -63,7 +63,7 @@ const Bar: React.FC<BarProps> = ({
         color: "#fff",
       }}
     >
-      {numBaptisms && `${numBaptisms} of ${goalBaptisms}`}
+      {numBaptisms}
     </div>
   </div>
 );
