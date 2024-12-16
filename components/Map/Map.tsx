@@ -9,9 +9,7 @@ import {
 import { mapOptions } from "./MapOptions";
 import { Baptism } from "../API/Models/Baptism";
 
-const center = { lat:38.427159, lng: -89.910406
-
-};
+const center = { lat: 38.427159, lng: -89.910406 };
 
 const icon = {
   //  url:"https://e7.pngegg.com/pngimages/38/957/png-clipart-water-drop-logo-drop-rain-blog-drops-television-blue.png",
@@ -47,7 +45,7 @@ export const Map: React.FC<MapProps> = ({ baptisms }) => {
         <GoogleMap
           mapContainerStyle={{ width: "100%", height: "101.5vh" }}
           center={center}
-          zoom={10.50}
+          zoom={11}
           options={mapOptions}
         >
           {baptisms.map((baptism) => (
@@ -71,7 +69,7 @@ const Spacer = () => (
     style={{
       margin: 0,
       width: "100%",
-      height: "95vh",
+      height: "90vh",
     }}
   />
 );
