@@ -3,6 +3,18 @@ import { Baptism } from "../API/Models/Baptism";
 import { MdWaterDrop } from "react-icons/md";
 import { ColorTheme } from "../ColorTheme";
 
+export const BaptismMarker = ({ baptism }: { baptism: Baptism }) => {
+  return (
+    <OverlayView
+      key={baptism.id + 2}
+      position={{ lat: baptism.latitude, lng: baptism.longitude }}
+      mapPaneName={OverlayView.OVERLAY_LAYER}
+    >
+      <WaterDropMarker />
+    </OverlayView>
+  );
+};
+
 const WaterDropMarker = () => (
   <div
     style={{
@@ -19,15 +31,3 @@ const WaterDropMarker = () => (
     <MdWaterDrop size={"3rem"} color={ColorTheme.primaryColorTertiary} />
   </div>
 );
-
-export const BaptismMarker = ({ baptism }: { baptism: Baptism }) => {
-  return (
-    <OverlayView
-      key={baptism.id + 2}
-      position={{ lat: baptism.latitude, lng: baptism.longitude }}
-      mapPaneName={OverlayView.OVERLAY_LAYER}
-    >
-      <WaterDropMarker />
-    </OverlayView>
-  );
-};
