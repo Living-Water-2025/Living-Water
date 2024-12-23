@@ -30,7 +30,7 @@ export const ClusteringMap: React.FC<IClusteringMapProps> = ({ baptisms }) => {
           <>
             {baptisms.map((baptism) => (
               <Marker
-                key={`${baptism.latitude}-${baptism.longitude}`}
+                key={baptism.id}
                 position={{ lat: baptism.latitude, lng: baptism.longitude }}
                 clusterer={clusterer}
               />
