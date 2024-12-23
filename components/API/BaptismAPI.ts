@@ -2,6 +2,12 @@ import { useEffect, useState } from "react";
 import { Baptism } from "./Models/Baptism";
 
 export class BaptismAPI {
+  
+  public getClusteredBaptisms = async () => 
+  {
+    //TODO: implement this, should be very similar to getBaptisms
+  }
+
   public getBaptisms = async () => {
     try {
       const response = await fetch(
@@ -30,4 +36,5 @@ export class BaptismAPI {
     const data: Baptism = await response.json();
     return data;
   };
+
 }
