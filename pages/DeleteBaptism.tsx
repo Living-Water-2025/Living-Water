@@ -6,10 +6,12 @@ import { BaptismAPI } from "@/components/API/BaptismAPI";
 import { Baptism } from "@/components/API/Models/Baptism";
 import { deleteMapOptions } from "@/components/Map/MapOptions";
 import { RootLayout } from "@/components/RootLayout";
+import { AddBaptismMapPrompt } from "@/components/AddBaptismMap/AddBaptismMapPrompt";
+import { DeleteBaptismPrompt } from "@/components/DeleteBaptismMap/DeleteBaptismPrompt";
 
 const center = { lat: 38.427159, lng: -89.910406 };
 
-export default function DeleteBaptism() {
+export default function DeleteBaptismMap() {
   const [baptisms, setBaptisms] = useState<Baptism[]>([]);
 
   const { isLoaded, loadError } = useLoadScript({
@@ -31,7 +33,7 @@ export default function DeleteBaptism() {
 
     if (response.success) {
       setBaptisms(baptisms.filter((baptism) => baptism.id !== id));
-      alert("Baptism deleted successfully");
+      alert("'1' Baptism deleted successfully");
     } else {
       alert("Wrong Password. Try Again.");
     }
@@ -49,11 +51,12 @@ export default function DeleteBaptism() {
 
   return (
     <RootLayout>
+      <DeleteBaptismPrompt />
       <GoogleMap
-      mapContainerStyle={{
-        width: "100vw",
-        height: "100%",
-      }}
+        mapContainerStyle={{
+          width: "100vw",
+          height: "100%",
+        }}
         center={center}
         zoom={10}
         options={deleteMapOptions}
