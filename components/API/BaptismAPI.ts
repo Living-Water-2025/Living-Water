@@ -37,16 +37,22 @@ export class BaptismAPI {
     return data;
   };
 
-  public deleteBaptism = async (id: string, password: string ) => {
-    const response = await fetch(
-      `${process.env.NEXT_PUBLIC_URL}/DeleteBaptism?id=${id}&password=${password}`,
-      {
-        method: "DELETE",
-      }
-    );
+  public deleteBaptism = async (id: string, password: string) => {
+    try {
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_URL}/DeleteBaptism?id=${id}&password=${password}`,
+        {
+          method: "DELETE",
+        }
+      );
 
-    if (!response.ok) {
-      throw new Error("Failed to delete baptism");
+      if (!response.ok) {
+        return { success: false };
+      }
+
+      return { success: true };
+    } catch (error) {
+      return { success: false };
     }
   };
 }

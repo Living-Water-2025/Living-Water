@@ -14,6 +14,7 @@ export const mapOptions = {
 
 
 export const deleteMapOptions = {
+  disableDefaultUI: true,
   zoom: 10.2,
   fullscreenControl: false,
   mapTypeControl: false,

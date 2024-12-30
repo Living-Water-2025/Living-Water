@@ -1,25 +1,22 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { GoogleMap, Marker, useLoadScript } from "@react-google-maps/api";
 import { BaptismAPI } from "@/components/API/BaptismAPI";
-import { RootLayout } from "@/components/RootLayout";
 import { Baptism } from "@/components/API/Models/Baptism";
-import { darkModeStyles } from "@/components/Map/DarkModeStyles";
 import { deleteMapOptions } from "@/components/Map/MapOptions";
-import { AddBaptismMapPrompt } from "@/components/AddBaptismMap/AddBaptismMapPrompt";
+import { RootLayout } from "@/components/RootLayout";
 
 const center = { lat: 38.427159, lng: -89.910406 };
 
 export default function DeleteBaptism() {
   const [baptisms, setBaptisms] = useState<Baptism[]>([]);
-  const [message, setMessage] = useState("");
 
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_API_KEY || "",
   });
 
-  React.useEffect(() => {
+  useEffect(() => {
     const fetchBaptisms = async () => {
       const baptismAPI = new BaptismAPI();
       const fetchedBaptisms = await baptismAPI.getBaptisms();
@@ -29,13 +26,14 @@ export default function DeleteBaptism() {
   }, []);
 
   const handleDelete = async (id: string, password: string) => {
-    try {
-      const baptismAPI = new BaptismAPI();
-      await baptismAPI.deleteBaptism(id, password);
+    const baptismAPI = new BaptismAPI();
+    const response = await baptismAPI.deleteBaptism(id, password);
+
+    if (response.success) {
       setBaptisms(baptisms.filter((baptism) => baptism.id !== id));
-      setMessage("Baptism deleted successfully");
-    } catch (error) {
-      setMessage("Failed to delete baptism");
+      alert("Baptism deleted successfully");
+    } else {
+      alert("Wrong Password. Try Again.");
     }
   };
 
@@ -46,15 +44,16 @@ export default function DeleteBaptism() {
     }
   };
 
-  if (!isLoaded || loadError) return <div>Loading...</div>;
+  if (!isLoaded) return <div>Loading...</div>;
+  if (loadError) return <div>Error loading maps</div>;
 
   return (
     <RootLayout>
       <GoogleMap
-        mapContainerStyle={{
-          width: "100%",
-          height: "100vh",
-        }}
+      mapContainerStyle={{
+        width: "100vw",
+        height: "100%",
+      }}
         center={center}
         zoom={10}
         options={deleteMapOptions}
