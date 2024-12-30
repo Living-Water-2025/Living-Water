@@ -11,3 +11,14 @@ export const mapOptions = {
   draggable: false,
   scrollwheel: false,
 };
+
+
+export const deleteMapOptions = {
+  zoom: 10.2,
+  fullscreenControl: false,
+  mapTypeControl: false,
+  streetViewControl: false,
+  styles: darkModeStyles,
+  keyboardShortcuts: false,
+  zoomControl: false,
+};

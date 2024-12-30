@@ -37,9 +37,9 @@ export class BaptismAPI {
     return data;
   };
 
-  public deleteBaptism = async (id: string) => {
+  public deleteBaptism = async (id: string, password: string ) => {
     const response = await fetch(
-      `${process.env.NEXT_PUBLIC_URL}/DeleteBaptism/${id}`,
+      `${process.env.NEXT_PUBLIC_URL}/DeleteBaptism?id=${id}&password=${password}`,
       {
         method: "DELETE",
       }
