@@ -1,12 +1,9 @@
-import { useEffect, useState } from "react";
 import { Baptism } from "./Models/Baptism";
 
 export class BaptismAPI {
-  
-  public getClusteredBaptisms = async () => 
-  {
+  public getClusteredBaptisms = async () => {
     //TODO: implement this, should be very similar to getBaptisms
-  }
+  };
 
   public getBaptisms = async () => {
     try {
@@ -27,6 +24,9 @@ export class BaptismAPI {
     const response = await fetch(process.env.NEXT_PUBLIC_URL + "/AddBaptism", {
       method: "POST",
       body: JSON.stringify(baptism),
+      headers: {
+        "Content-Type": "application/json",
+      },
     });
 
     if (!response.ok) {
@@ -37,4 +37,16 @@ export class BaptismAPI {
     return data;
   };
 
+  public deleteBaptism = async (id: string) => {
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_URL}/DeleteBaptism/${id}`,
+      {
+        method: "DELETE",
+      }
+    );
+
+    if (!response.ok) {
+      throw new Error("Failed to delete baptism");
+    }
+  };
 }
