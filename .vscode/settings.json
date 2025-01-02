@@ -2,5 +2,7 @@
   "editor.formatOnSave": true,
   "files.autoSave": "afterDelay",
   "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "omnisharp.useEditorFormattingSettings": false
+  "omnisharp.useEditorFormattingSettings": false,
+  "typescript.updateImportsOnPaste.enabled": false,
+  "javascript.updateImportsOnPaste.enabled": false,
 }

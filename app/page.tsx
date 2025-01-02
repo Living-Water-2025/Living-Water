@@ -1,6 +1,6 @@
 "use client";
 import { useBaptisms } from "@/components/Hooks/useBaptisms";
-import { Map } from "../components/Map/Map";
+import { ClusteringMap } from "@/components/ClusteringMap";
 import { MapTitle } from "@/components/Map/MapTitle";
 import ProgressBar from "@/components/ProgressBar/progressBar";
 import { AboutUs } from "@/components/AboutUs";
@@ -11,7 +11,7 @@ export default function Home() {
     <>
       {/*Map and title exist in the background and adds a screen-sized empty div over itself.*/}
       <MapTitle />
-      <Map baptisms={baptisms} />
+      <ClusteringMap baptisms={baptisms} />
 
       <div
         style={{
