@@ -1,4 +1,4 @@
-import React, { use, useEffect } from "react";
+import React from "react";
 import { ColorTheme } from "../ColorTheme";
 import { useShimmerAnimation } from "../Hooks/useShimmerAnimation";
 
@@ -7,7 +7,7 @@ type ProgressBarProps = {
 };
 
 const ProgressBar: React.FC<ProgressBarProps> = ({ numBaptisms }) => {
-  const goalBaptisms = 20;
+  const goalBaptisms = 1000;
   const percentComplete = (numBaptisms / goalBaptisms) * 100;
 
   useShimmerAnimation();

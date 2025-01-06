@@ -16,7 +16,7 @@ export const AboutUs: React.FC = () => (
       className="text-md leading-relaxed p-4 m-3 rounded-lg"
       style={{ backgroundColor: ColorTheme.primaryColorSecondary }}
     >
-      As we journey together toward achieiving 100 baptisms by 2025, we give
+      As we journey together toward achieiving 1000 baptisms by 2025, we give
       thanks to all those who have participated - if you have questions or would
       like to learn more about our mission, please don't hesitate to reach out!
     </p>
